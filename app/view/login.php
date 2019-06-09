@@ -25,7 +25,7 @@
                     <button type="submit" class="btn btn-light">Login</button>
                     <br>
                     <br>
-                    <a href="<?php echo URLROOT; ?>register/CreateAccount" class="btn btn-warning">Register</a>
+                    <a href="<?php echo URLROOT; ?>register/index" class="btn btn-warning">Register</a>
                 </form>
             </div>
         </div>

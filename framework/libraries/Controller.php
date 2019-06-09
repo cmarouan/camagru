@@ -15,7 +15,7 @@
             //echo getcwd();
             if (file_exists('../app/view/' . $view . '.php'))
             {
-                require_once ('../app/view/' . $view . '.php');
+                require_once '../app/view/' . $view . '.php';
             }
             else
             {
