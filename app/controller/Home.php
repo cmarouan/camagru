@@ -1,15 +1,17 @@
 <?php
-class Home extends Controller
-{
+class Home extends Controller {
     private $db;
     public function __construct()
     {
         $this->db = new Database;
     }
-    
     public function index()
     {
-        $this->View("home");
+        if (isset($_SESSION['user_id'])) {
+            $this->View('home');
+        }
+        else
+            header('Location: '. URLROOT);
     }
 }
 ?>

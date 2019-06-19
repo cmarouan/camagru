@@ -50,14 +50,14 @@ class Database{
 
     public function single_data()
     {
-        $this->execute();
+        $this->execute_my_requete();
         return ($this->req->fetch(PDO::FETCH_OBJ));
     }
 
     public function all_data()
     {
-        $this->execute();
-        return ($this->req->fetchAll(PDO::FETCH_OBJ));
+        $this->execute_my_requete();
+        return ($this->req->fetchAll(PDO::FETCH_CLASS));
     }
 }
 ?>

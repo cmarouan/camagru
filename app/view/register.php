@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo URLROOT?>public/css/register.css">
 </head>
 <body id="LoginForm">
@@ -12,30 +12,33 @@
                     <h2>Camagru Register</h2>
                     <p>Please enter your information</p>
                 </div>
-                <form id="Login" action="<?php echo URLROOT; ?>register/CreateAccount" method="post">
+                <form id="Login"  method="post" action="<?php echo URLROOT; ?>register">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="inputfirst" id="inputfirst" placeholder="First name" required>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" value="<?php echo $data['username']; ?>" required>
+                        <span style = "color : red"><?php echo $data['username_err']; ?></span>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="inputlast" id="inputlast" placeholder="Lat name" required>
+                        <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" value="<?php echo $data['email']; ?>" required>
+                        <span style = "color : red"><?php echo $data['email_err']; ?></span>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" required>
+                        <input type="password" class="form-control" name="inputPass" id="inputPass" placeholder="Password" value="<?php echo $data['password']; ?>" required>
+                        <span style = "color : red"><?php echo $data['password_err']; ?></span>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="inputPass" id="inputPass" placeholder="Password" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" name="inputConfpass" id="inputConfpass" placeholder="Confirme your Password" required>
+                        <input type="password" class="form-control" name="inputConfpass" id="inputConfpass" placeholder="Confirme your Password" value="<?php echo $data['confirm_password']; ?>" required>
+                        <span style = "color : red"><?php echo $data['confirm_password_err']; ?></span>
                     </div>
                     <br>
-                    <button class="btn btn-warning" type="submit"> Create </button>
+                    <button class="btn btn-primary" type="submit"> Create </button>
                     <br>
                     <br>
-                    <a href="<?php echo URLROOT; ?>login" class="btn btn-light">Back to login</a>
+                    <a href="<?php echo URLROOT; ?>login" class="btn btn-danger">Back to login</a>
                 </form>
             </div>
         </div>
     </div>
 </div>
-</body>
+<?php
+require APPROOT . '/view/inc/footer.php';
+?>
