@@ -51,11 +51,25 @@ class Register extends Controller {
             }
             if(empty($data['email_err']) && empty($data['password_err']) && empty($data['username_err']) && empty($data['confirm_password_err'])){
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                $token = 'QWERTYUIOPLBCGqwetzxcv12345678902QWERT!(^^^05Sd)';
+                $token = 'QWERTYUIOPvcgj4kkjjkvv/jghfhgvhgff[asdghjQAwdgccjllplkmjnMKJHDFGJ[]#3LBCGqwetzxcv12345678902QWERT(05Sd)';
                 $token = str_shuffle($token);
                 $token = substr($token, 0, 10);
                 $data['token'] = $token;
-                //$t =  mail('merouan.chakour@gmail.com', 'firstName', 'Click here to confirm : ');
+                $to  = $data['email'];
+                $subject = 'Confirm account';
+                $message = '
+                    <html>
+                    <head>
+                    </head>
+                    <body>
+                        <p>To active your account click <a href="localhost/untitled/register/confirm/TY9e5OSWxx">Here</a></p>
+                    </body>
+                    </html>
+                ';
+                $headers[] = 'MIME-Version: 1.0';
+                $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+                $headers[] = 'To: ' . $to;
+                mail($to, $subject, $message , implode("\r\n", $headers));
                 if($this->userModel->register($data)){
                     $this->View('login');
                 } else {
@@ -81,5 +95,9 @@ class Register extends Controller {
         }
     }
 
+    public function confirm($token){
+        if ($this->userModel->activeAccount($token))
+            header('Location: '. URLROOT);
+    }
 }
 ?>

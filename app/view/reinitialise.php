@@ -9,19 +9,16 @@
         <div class="login-form">
             <div class="main-div">
                 <div class="panel">
-                    <h2>Enter your email</h2>
+                    <h2>Enter your new password</h2>
                     <br>
                 </div>
-                <form id="Login" method="post" action="<?php echo URLROOT . 'forget/sendForgetMail'; ?>">
+                <form id="Login" method="post" action="<?php $url = rtrim($_GET['url'], '/'); $url = filter_var($url, FILTER_SANITIZE_URL); $url = explode('/', $url); echo URLROOT . 'reinitialise/InitPass/' . $url[2]; ?>">
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                        <input type="password" name="pass" class="form-control" id="pass" placeholder="New password">
                     </div>
                     <br>
-                    <p style="color: limegreen"> <?php echo $data['suc'];?></p>
                     <p style="color: red;"><?php echo $data['err'];?></p>
                     <button  type="submit" class="btn btn-primary">Continue</button>
-                    <br>
-                    <a style="margin-top:2%;" href="<?php echo URLROOT . 'Forget'; ?>login" class="btn btn-danger">Back to login</a>
                 </form>
             </div>
         </div>

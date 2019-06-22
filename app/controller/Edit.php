@@ -7,8 +7,14 @@ class Edit extends Controller {
 
     public function index()
     {
+        $data =[
+            'username' => '',
+            'mail' => '',
+            'err' => '',
+            'err_2' => ''
+        ];
         if (isset($_SESSION['user_id'])) {
-            $this->View('edit');
+            $this->View('edit', $data);
         }
         else
             header('Location: '. URLROOT);
@@ -53,6 +59,18 @@ class Edit extends Controller {
                 }
         }
     }
+
+    public function activeComment(){
+        $id = $_SESSION['user_id'];
+        $act = $_SESSION['active_comment'];
+        $this->userModel->activeComment($id, $act);
+        if ($act == 0)
+            $_SESSION['active_comment'] = 1;
+        else
+            $_SESSION['active_comment'] = 0;
+        header('Location: '. URLROOT . 'edit');
+    }
+
     public function editPass()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -74,6 +92,21 @@ class Edit extends Controller {
             }
             else if (empty($data['err_2'])){
                 if ($this->userModel->update_password(password_hash($data['pass'], PASSWORD_DEFAULT), $id)) {
+                    $to  = $_SESSION['user_email'];
+                    $subject = 'Password';
+                    $message = '
+                    <html>
+                    <head>
+                    </head>
+                    <body>
+                        <p>Your password was changed</p>
+                    </body>
+                    </html>
+                ';
+                    $headers[] = 'MIME-Version: 1.0';
+                    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+                    $headers[] = 'To: ' . $to;
+                    if (mail($to, $subject, $message , implode("\r\n", $headers)))
                     unset( $_SESSION['user_id']);
                     unset( $_SESSION['user_email']);
                     unset( $_SESSION['username']);

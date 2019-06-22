@@ -2,8 +2,8 @@
 require APPROOT . '/view/inc/header.php';
 ?>
     <div id="all" class="container-fluid">
-        <div class="w-50 px-3 py-3 pt-md-4 pb-md-4 mx-auto text-center">
-            <h1 class="display-9 font-weight-bold text-center" style="font-family: cursive;">Your photo</h1>
+        <div class="text-center">
+            <h1 class="text-center" style="font-family: cursive;">Your photo</h1>
         </div>
         <div id="photos">
             <?php  foreach ((array) $data as $d) {  ?>

@@ -10,6 +10,25 @@ class About extends Controller {
             header('Location: '. URLROOT);
     }
 
+    public function send_email($type , $img_id){
+        $usr = $this->imageModel->user_by_email_adrress($img_id);
+        $to  = $usr->email;
+        $subject = 'Camagru notification';
+        $message = '
+                <html>
+                <head>
+                </head>
+                <body>
+                    <p>One of your photo was ' . $type .' </p>
+                </body>
+                </html>
+                ';
+        $headers[] = 'MIME-Version: 1.0';
+        $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+        $headers[] = 'To: ' . $to;
+        mail($to, $subject, $message , implode("\r\n", $headers));
+    }
+
     public function index($id)
     {
         $data = [
@@ -35,6 +54,7 @@ class About extends Controller {
         $usr = $_SESSION['user_id'];
         $comment = $_POST['cmt'];
         $this->imageModel->comment($img, $usr, $comment);
+        $this->send_email("Commented" , $img);
         header('Location: '. URLROOT . 'about/' . $img);
     }
 }

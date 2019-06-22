@@ -26,6 +26,16 @@
                 return false;
             }
         }
+        public function findUserByUsernameLog($user){
+            $this->db->insert_prepare('SELECT * FROM users WHERE username = :user and active = 1');
+            $this->db->affect_type(':user', $user);
+            $row = $this->db->single_data();
+            if($this->db->rowCount() > 0){
+                return true;
+            } else {
+                return false;
+            }
+        }
         public function findUserByUsername($user){
             $this->db->insert_prepare('SELECT * FROM users WHERE username = :user');
             $this->db->affect_type(':user', $user);
@@ -47,9 +57,22 @@
                 return false;
             }
         }
+
+        public function getIdByToken($token){
+            $this->db->insert_prepare('SELECT * FROM users WHERE token = :token');
+            $this->db->affect_type(':token', $token);
+            $row = $this->db->single_data();
+            return ($row);
+        }
         public function fetch_data($username){
             $this->db->insert_prepare('SELECT * FROM users WHERE username = :username');
             $this->db->affect_type(':username', $username);
+            $row = $this->db->single_data();
+            return ($row);
+        }
+        public function getTokenByEmail($email){
+            $this->db->insert_prepare('SELECT * FROM users WHERE email = :email');
+            $this->db->affect_type(':email', $email);
             $row = $this->db->single_data();
             return ($row);
         }
@@ -94,6 +117,7 @@
             else
                 return (false);
         }
+
         public function login($data){
             $username = $data['username'];
             $pass = $data['pass'];
@@ -107,6 +131,27 @@
                 }
             }
             return (false);
+        }
+
+        public function activeAccount($token){
+            $this->db->insert_prepare('update users set active = 1 where token = :token');
+            $this->db->affect_type(':token', $token);
+            if ($this->db->execute_my_requete())
+                return (true);
+            else
+                return (false);
+        }
+
+        public function activeComment($id, $act){
+            if ($act == 1)
+                $this->db->insert_prepare('update users set active_comment = 0 where id_user = :id');
+            else
+                $this->db->insert_prepare('update users set active_comment = 1 where id_user = :id');
+            $this->db->affect_type(':id', $id);
+            if ($this->db->execute_my_requete())
+                return (true);
+            else
+                return (false);
         }
     }
 ?>

@@ -6,7 +6,7 @@ require APPROOT . '/view/inc/header.php';
 </div>
 <div class="container text-center">
     <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
+        <div class="col-lg-4 pb-4 d-block m-auto">
             <div class="pricing-item" style="box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
                 <div class="pt-4 pb-3" style="letter-spacing: 2px">
                     <h4 style="font-family: cursive;">Camera</h4>
@@ -28,7 +28,7 @@ require APPROOT . '/view/inc/header.php';
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
+        <div class="col-lg-4 pb-4 d-block m-auto">
             <div class="pricing-item" style="box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
                 <div class="pt-4 pb-3" style="letter-spacing: 2px">
                     <h4 style="font-family: cursive;">Profile</h4>
@@ -50,7 +50,7 @@ require APPROOT . '/view/inc/header.php';
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
+        <div class="col-lg-4 pb-4 d-block m-auto">
             <div class="pricing-item" style="box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
                 <div class="pt-4 pb-3" style="letter-spacing: 2px">
                     <h4 style="font-family: cursive;">Friends</h4>
@@ -74,7 +74,7 @@ require APPROOT . '/view/inc/header.php';
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
+        <div class="col-lg-4 pb-4 d-block m-auto">
             <div class="pricing-item" style="box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
                 <div class="pt-4 pb-3" style="letter-spacing: 2px">
                     <h4 style="font-family: cursive;">Edit</h4>
@@ -96,7 +96,7 @@ require APPROOT . '/view/inc/header.php';
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
+        <div class="col-lg-4 pb-4 d-block m-auto">
             <div class="pricing-item" style="box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
                 <div class="pt-4 pb-3" style="letter-spacing: 2px">
                     <h4 style="font-family: cursive;">State</h4>
@@ -118,7 +118,7 @@ require APPROOT . '/view/inc/header.php';
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
+        <div class="col-lg-4 pb-4 d-block m-auto">
             <div class="pricing-item" style="box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
                 <div class="pt-4 pb-3" style="letter-spacing: 2px">
                     <h4 style="font-family: cursive;">Logout</h4>

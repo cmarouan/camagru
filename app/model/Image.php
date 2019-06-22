@@ -18,6 +18,13 @@
                 return (false);
         }
 
+        public function user_by_email_adrress($img_id){
+            $this->db->insert_prepare('SELECT * from users join images on images.user_id = users.id_user where images.image_id = :img_id and active_comment = 1');
+            $this->db->affect_type(':img_id', $img_id);
+            $row = $this->db->single_data();
+            return ($row);
+        }
+
         public function get_images(){
             $this->db->insert_prepare('SELECT * FROM images join users on users.id_user = images.user_id order by image_date desc');
             $row = $this->db->all_data();

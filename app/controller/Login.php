@@ -14,6 +14,17 @@ class Login extends Controller {
         header('Location: '. URLROOT);
     }
 
+    public function log()
+    {
+        $data =[
+            'username' => '',
+            'pass' => '',
+            'pass_err' => '',
+            'username_err' => ''
+        ];
+        $this->View('login', $data);
+    }
+
     public function index()
     {
         if (isset($_SESSION['user_id'])) {
@@ -29,8 +40,8 @@ class Login extends Controller {
                     'pass_err' => '',
                     'username_err' => ''
                 ];
-                if($this->userModel->findUserByUsername($data['username']) == false){
-                    $data['username_err'] = 'Username doesn\'t exist';
+                if($this->userModel->findUserByUsernameLog($data['username']) == false){
+                    $data['username_err'] = 'Username doesn\'t exist or account not active';
                     $this->View('login', $data);
                     die();
                 }
@@ -42,6 +53,7 @@ class Login extends Controller {
                     $_SESSION['user_id'] = $user->id_user;
                     $_SESSION['user_email'] = $user->email;
                     $_SESSION['username'] = $user->username;
+                    $_SESSION['active_comment'] = $user->active_comment;
                     header('Location: '. URLROOT . 'home/' . $user->id_user);
                 }
                 else{

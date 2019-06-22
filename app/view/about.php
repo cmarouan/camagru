@@ -5,8 +5,8 @@ require APPROOT . '/view/inc/header.php';
 <form method="post" action="<?php echo URLROOT . 'about/comment/' . $data['image']->image_id?>">
 
     <div id="all" class="container-fluid">
-        <div class="w-50 px-3 py-3 pt-md-4 pb-md-4 mx-auto text-center">
-            <h1 class="display-9 font-weight-bold text-center">About photo</h1>
+        <div class="text-center pb-3">
+            <h1 class="text-center">About photo</h1>
         </div>
         <div id="photos">
             <div class="row">
@@ -18,7 +18,7 @@ require APPROOT . '/view/inc/header.php';
                         $src = 'data: image/png;base64,'.$imageData;
                         echo '<img class="card-img-top" src="' . $src . '">'; ?>
                         <div class="card-body">
-                            <h5 class="card-title border-bottom pb-3"><a href="<?php echo URLROOT . 'friends'?>" style = "margin-left: 2%" class="btn btn-sm btn-danger">Back </a> <?php echo $_SESSION['username']?> <p class="float-right" style="color: dodgerblue;"> <small><?php echo $data->image_date?></small> </p></h5>
+                            <h5 class="card-title border-bottom pb-3"><a href="<?php echo URLROOT . 'friends'?>" style = "margin-left: 2%" class="btn btn-sm btn-danger">Back </a> <?php echo $_SESSION['username']?> <p class="float-right" style="color: dodgerblue;"> <small><?php echo $data['image']->image_date?></small> </p></h5>
                             <div class="form-group purple-border">
                                 <textarea class="form-control" name="cmt" id="exampleFormControlTextarea4" rows="3" required></textarea>
                             </div>
@@ -34,7 +34,7 @@ require APPROOT . '/view/inc/header.php';
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                 </div>
             </div>
         </div>
