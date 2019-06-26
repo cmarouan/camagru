@@ -50,7 +50,6 @@ class About extends Controller {
 
     public function comment($img)
     {
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $usr = $_SESSION['user_id'];
         $comment = $_POST['cmt'];
         $this->imageModel->comment($img, $usr, $comment);

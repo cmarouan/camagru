@@ -4,14 +4,14 @@ require APPROOT . '/view/inc/header.php';
 <div id="all" class="container-fluid">
     <div class="text-center">
         <h1 class="text-center" style="font-family: cursive;">Friends photo</h1>
-        1
-        <a class="btn btn-light"><</a>
-        1
-        <a class="btn btn-light">></a>
-        20
+        <?php echo $data['nbStart']; ?>
+        <a class="btn btn-light" href="<?php echo URLROOT . 'friends/debut'?>">Start</a>
+        <?php echo $data['currentPage']; ?>
+        <a class="btn btn-light" href="<?php echo URLROOT . 'friends/next'?>">></a>
+        <?php echo $data['nbPages']; ?>
     </div>
     <div id="photos">
-        <?php  foreach ((array) $data as $d) {  ?>
+        <?php  foreach ((array) $data['images'] as $d) {  ?>
         <div class="row" style="margin-top: 1%;">
             <div class="col-md-4">
             </div>

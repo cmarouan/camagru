@@ -96,9 +96,6 @@ require APPROOT . '/view/inc/header.php';
                     <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
-                            <div style="color : red">
-                                <?php echo $data['err_2']; ?>
-                            </div>
                             <br>
                             <button class="btn btn-md btn-primary w-75" type="submit"><span><?php 
                                 if ($_SESSION['active_comment'] == 1)

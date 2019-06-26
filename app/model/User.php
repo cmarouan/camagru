@@ -107,7 +107,7 @@
             $pass = $data['password'];
             $token = $data['token'];
 
-            $this->db->insert_prepare('insert into users (username, email, pass, token, active) values (:username, :email, :pass, :token, 0)');
+            $this->db->insert_prepare('insert into users (username, email, pass, token, active, active_comment) values (:username, :email, :pass, :token, 0,0)');
             $this->db->affect_type(':email', $email);
             $this->db->affect_type(':username', $username);
             $this->db->affect_type(':pass', $pass);
@@ -122,7 +122,6 @@
             $username = $data['username'];
             $pass = $data['pass'];
             if ($this->findUserByUsername($username)) {
-                //if ($pass == password_hash($data['password'], PASSWORD_DEFAULT))
                 $this->db->insert_prepare('SELECT * FROM users WHERE username = :username');
                 $this->db->affect_type(':username', $username);
                 $row = $this->db->single_data();

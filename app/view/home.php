@@ -53,7 +53,7 @@ require APPROOT . '/view/inc/header.php';
         <div class="col-lg-4 pb-4 d-block m-auto">
             <div class="pricing-item" style="box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
                 <div class="pt-4 pb-3" style="letter-spacing: 2px">
-                    <h4 style="font-family: cursive;">Friends</h4>
+                    <h4 style="font-family: cursive;">Galerie</h4>
                 </div>
                 <div class="pricing-price pb-1 text-primary color-primary-text ">
                     <h1 style="font-weight: 1000; font-size: 3.5em;">

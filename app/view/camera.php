@@ -48,20 +48,23 @@ require APPROOT . '/view/inc/header.php';
     </div>
     <form name="form">
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto text-center">
+            <div class="col-md-3 text-center">
                 <img id="design" style="width: 100px; height: 100px;" src="<?php echo URLROOT?>public/img/design.png" alt="">
                 <br>
                 <input type="radio" value="design" name="stickers" checked> Happy
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto text-center">
+            <div class="col-md-3 text-center">
                 <img id="lunette"  style="width: 100px; height: 100px;" src="<?php echo URLROOT?>public/img/lunette.png" alt="">
                 <br>
                 <input type="radio" value="lunette" name="stickers"> Arrogant
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto text-center">
+            <div class="col-md-3 text-center">
                 <img id="twitter" style="width: 100px; height: 100px;"  src="<?php echo URLROOT?>public/img/twitter.png" alt="">
                 <br>
                 <input type="radio" value="twitter" name="stickers"> 1337
+            </div>
+            <div class="col-md-3 text-center">
+                <input type="button" id="noSticker" onclick="no_Sticker();"  class="btn btn-primary" style="margin-top:15%;" value="noSticker" >
             </div>
         </div>
 
@@ -74,7 +77,7 @@ require APPROOT . '/view/inc/header.php';
             <br>
             <br>
             <br>
-            <input type="file" id="loadIMG" onchange="upload_to_server(); setTimeout('document.location.reload(true);', 500);"><br>
+            <input type="file" id="loadIMG" accept="image/png, image/jpeg" onchange="upload_to_server(); setTimeout('document.location.reload(true);', 500);"><br>
         </div>
         <div class="col-md-2">
         </div>

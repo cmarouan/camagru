@@ -3,9 +3,7 @@
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
     var photo = document.getElementById('photoPic');
-    var vendorUrl = window.URL || window.webkitURL;
     var name = 'none';
-    var img2 = new Image;
     navigator.getMedia = navigator.getUserMedia ||
                          navigator.webkitGetUserMedia ||
                          navigator.mozGetUserMedia ||
@@ -53,6 +51,18 @@
         console.log(error);
     });
 })();
+
+function no_Sticker(){
+    var radios = document.getElementsByName('stickers');
+    for (var i = 0, length = radios.length; i < length; i++)
+    {
+        if (radios[i].checked)
+        {
+            radios[i].checked = false;
+            break;
+        }
+    }
+}
 
 function upload_to_server() {
     var file    = document.querySelector('input[type=file]').files[0];

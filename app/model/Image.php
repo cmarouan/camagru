@@ -18,6 +18,32 @@
                 return (false);
         }
 
+        public function deleteComment($id){
+            $this->db->insert_prepare('delete from comments where id_photo = :id');
+            $this->db->affect_type(':id', $id);
+            if ($this->db->execute_my_requete())
+                return (true);
+            else
+                return (false);
+        }
+
+        public function deleteLike($id){
+            $this->db->insert_prepare('delete from likes where id_photo = :id');
+            $this->db->affect_type(':id', $id);
+            if ($this->db->execute_my_requete())
+                return (true);
+            else
+                return (false);
+        }
+
+        public function img_pagination($limit_part1, $limit_part2){
+            $this->db->insert_prepare('SELECT * FROM images join users on users.id_user = images.user_id order by image_date desc LIMIT :limit_part1,:limit_part2');
+            $this->db->affect_type(':limit_part1', $limit_part1);
+            $this->db->affect_type(':limit_part2', $limit_part2);
+            $row = $this->db->all_data();
+            return ($row);
+        }
+
         public function user_by_email_adrress($img_id){
             $this->db->insert_prepare('SELECT * from users join images on images.user_id = users.id_user where images.image_id = :img_id and active_comment = 1');
             $this->db->affect_type(':img_id', $img_id);

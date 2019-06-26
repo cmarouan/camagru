@@ -2,8 +2,15 @@
 <head>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="<?php echo URLROOT?>public/css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body id="LoginForm" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand text-dark" style="font-family: cursive;" href="<?php echo URLROOT; ?>">Login<small></small></a>
+    <a class="navbar-brand text-dark float-right" href="<?php echo URLROOT; ?>friends"><span>Galerie</span></a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+    </div>
+</nav>
 <div id="loginF">
     <div class="container">
         <div class="login-form">

@@ -54,6 +54,8 @@ class Camera extends Controller {
 
     public function deleteImg($id){
         $this->imageModel->deleteImg($id);
+        $this->imageModel->deleteComment($id);
+        $this->imageModel->deleteLike($id);
         $data = $this->imageModel->get_images();
         header('Location: '. URLROOT . 'camera');
     }
@@ -67,7 +69,6 @@ class Camera extends Controller {
         list(, $type) = explode('/', $type);
         $data = base64_decode($data);
         $one_img = $this->imageModel->get_image();
-        print_r($one_img);
         if (empty($one_img))
             $id = 0;
         else

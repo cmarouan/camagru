@@ -24,7 +24,7 @@ class Edit extends Controller {
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                //$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $data =[
                     'username' => trim($_POST['username']),
                     'mail' => trim($_POST['mail']),
@@ -76,11 +76,12 @@ class Edit extends Controller {
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             $id = $_SESSION['user_id'];
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            //$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data =[
                 'pass' => trim($_POST['pass']),
                 'newPass' => trim($_POST['newPass']),
-                'err_2' => ''
+                'err_2' => '',
+                'err' => ''
             ];
             if(empty($data['pass']) || empty($data['newPass'])){
                 $data['err_2'] = 'All input are required';
@@ -88,6 +89,11 @@ class Edit extends Controller {
             }
             else if ($data['pass'] != $data['newPass']){
                 $data['err_2'] = 'Password doesn\'t match';
+                $this->View('edit', $data);
+            }
+            else if (strlen($data['newPass']) < 8 || ctype_lower($data['password']))
+            {
+                $data['err_2'] = 'Password must be at least 8 characters & number / upper char';
                 $this->View('edit', $data);
             }
             else if (empty($data['err_2'])){
@@ -110,6 +116,7 @@ class Edit extends Controller {
                     unset( $_SESSION['user_id']);
                     unset( $_SESSION['user_email']);
                     unset( $_SESSION['username']);
+                    unset( $_SESSION['currentPage']);
                     session_destroy();
                     header('Location: '. URLROOT);
                     //exit();

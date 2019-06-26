@@ -5,13 +5,24 @@ class Register extends Controller {
 
     public function __construct()
     {
+        $data =[
+            'username' => '',
+            'email' => '',
+            'password' => '',
+            'confirm_password' => '',
+            'token' => '',
+            'email_err' => '',
+            'username_err' => '',
+            'password_err' => '',
+            'confirm_password_err' => ''
+        ];
         $this->userModel = $this->Model('User');
     }
 
     public function index(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            //$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data =[
                 'username' => trim($_POST['username']),
                 'email' => trim($_POST['inputEmail']),
@@ -39,8 +50,8 @@ class Register extends Controller {
             }
             if(empty($data['password'])){
                 $data['password_err'] = 'Please enter password';
-            } elseif(strlen($data['password']) < 8){
-                $data['password_err'] = 'Password must be at least 8 characters';
+            } elseif(strlen($data['password']) < 8 || ctype_lower($data['password'])){
+                $data['password_err'] = 'Password must be at least 8 characters & number / upper char';
             }
             if(empty($data['confirm_password'])){
                 $data['confirm_password_err'] = 'Please confirm password';
@@ -62,7 +73,7 @@ class Register extends Controller {
                     <head>
                     </head>
                     <body>
-                        <p>To active your account click <a href="localhost/untitled/register/confirm/TY9e5OSWxx">Here</a></p>
+                        <p>To active your account click <a href="localhost/untitled/register/confirm/'. $token .'">Here</a></p>
                     </body>
                     </html>
                 ';
@@ -71,7 +82,7 @@ class Register extends Controller {
                 $headers[] = 'To: ' . $to;
                 mail($to, $subject, $message , implode("\r\n", $headers));
                 if($this->userModel->register($data)){
-                    $this->View('login');
+                    header('Location: '. URLROOT);
                 } else {
                     die('Something went wrong');
                 }

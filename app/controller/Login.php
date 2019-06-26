@@ -3,6 +3,12 @@ class Login extends Controller {
     private $db;
     public function __construct()
     {
+        $data =[
+            'username' => '',
+            'pass' => '',
+            'pass_err' => '',
+            'username_err' => ''
+        ];
         $this->userModel = $this->Model('User');
     }
 
@@ -10,6 +16,7 @@ class Login extends Controller {
         unset( $_SESSION['user_id']);
         unset( $_SESSION['user_email']);
         unset( $_SESSION['username']);
+        unset( $_SESSION['currentPage']);
         session_destroy();
         header('Location: '. URLROOT);
     }
@@ -33,7 +40,7 @@ class Login extends Controller {
         else
         {
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                //$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $data =[
                     'username' => trim($_POST['username']),
                     'pass' => trim($_POST['pass']),
@@ -54,6 +61,7 @@ class Login extends Controller {
                     $_SESSION['user_email'] = $user->email;
                     $_SESSION['username'] = $user->username;
                     $_SESSION['active_comment'] = $user->active_comment;
+                    $_SESSION['currentPage'] = 0;
                     header('Location: '. URLROOT . 'home/' . $user->id_user);
                 }
                 else{

@@ -1,7 +1,6 @@
 <?php
 // load models and views
 abstract class Controller{
-
     public function Model($model)
     {
         require_once '../app/model/' . $model . '.php';
@@ -12,11 +11,6 @@ abstract class Controller{
     {
         if (file_exists('../app/view/' . $view . '.php'))
             require_once ('../app/view/' . $view . '.php');
-        else
-        {
-            //die ("View does not exist");
-        }
     }
-
 }
 ?>
